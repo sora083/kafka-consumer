@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: kafka-consumer
+  kafka:
+    consumer:
+      bootstrap-servers:
+        - localhost:9092
+
+kafka:
+  topic:
+    twitter: tweets
