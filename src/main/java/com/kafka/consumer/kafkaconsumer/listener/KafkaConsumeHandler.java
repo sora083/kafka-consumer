@@ -8,8 +8,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class KafkaConsumeHandler {
 
-	public void handleTwitterStream(Tweet tweet) {
+	public void handleTwitterStream(String tweet) {
 		log.info("consuming...");
-		log.info("tweet: {}", tweet.toString());
+		log.info("tweet: {}", tweet);
 	}
 }
