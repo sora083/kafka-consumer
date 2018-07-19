@@ -11,7 +11,7 @@ import org.springframework.kafka.annotation.KafkaListener;
 
 @Slf4j
 @SpringBootApplication
-//@EnableKafka
+@EnableKafka
 public class KafkaConsumerApplication {
 
 	public static void main(String[] args) {

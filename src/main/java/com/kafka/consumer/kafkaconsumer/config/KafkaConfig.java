@@ -3,7 +3,6 @@ package com.kafka.consumer.kafkaconsumer.config;
 import com.kafka.consumer.kafkaconsumer.bean.Tweet;
 import java.util.Map;
 import org.apache.kafka.common.serialization.StringDeserializer;
-import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -24,10 +23,10 @@ public class KafkaConfig {
 	private KafkaProperties kafkaProperties;
 
 	@Bean
-	public ConcurrentKafkaListenerContainerFactory<String, String> kafkaListenerContainerFactory() {
+	public ConcurrentKafkaListenerContainerFactory<String, Tweet> kafkaListenerContainerFactory() {
 		Map<String, Object> consumerProperties = kafkaProperties.buildConsumerProperties();
-		ConcurrentKafkaListenerContainerFactory<String, String> factory = new ConcurrentKafkaListenerContainerFactory<>();
-		ConsumerFactory<String, String> consumerFactory = new DefaultKafkaConsumerFactory<>(consumerProperties, new StringDeserializer(), new StringDeserializer());
+		ConcurrentKafkaListenerContainerFactory<String, Tweet> factory = new ConcurrentKafkaListenerContainerFactory<>();
+		ConsumerFactory<String, Tweet> consumerFactory = new DefaultKafkaConsumerFactory<>(consumerProperties, new StringDeserializer(), new JsonDeserializer<>());
 		factory.setConsumerFactory(consumerFactory);
 		return factory;
 	}

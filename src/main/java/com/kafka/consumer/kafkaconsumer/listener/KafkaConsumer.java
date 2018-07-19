@@ -12,7 +12,7 @@ public class KafkaConsumer {
 
 	private final KafkaConsumeHandler kafkaConsumeHandler;
 
-	//@KafkaListener(id = "twitter-consume", topics = "tweets")
+	@KafkaListener(id = "twitter-consume", topics = "tweets")
 	public void listen(String tweet) {
 		kafkaConsumeHandler.handleTwitterStream(tweet);
 	}
