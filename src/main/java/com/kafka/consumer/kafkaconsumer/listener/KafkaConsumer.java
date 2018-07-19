@@ -1,5 +1,6 @@
 package com.kafka.consumer.kafkaconsumer.listener;
 
+import com.kafka.consumer.kafkaconsumer.bean.Tweet;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -12,7 +13,7 @@ public class KafkaConsumer {
 
 	private final KafkaConsumeHandler kafkaConsumeHandler;
 
-	@KafkaListener(id = "twitter-consume", topics = "tweets")
+	@KafkaListener(id = "tweets", topics = "tweets")
 	public void listen(String tweet) {
 		kafkaConsumeHandler.handleTwitterStream(tweet);
 	}

@@ -23,10 +23,12 @@ public class KafkaConfig {
 	private KafkaProperties kafkaProperties;
 
 	@Bean
-	public ConcurrentKafkaListenerContainerFactory<String, Tweet> kafkaListenerContainerFactory() {
+	public ConcurrentKafkaListenerContainerFactory<String, String> kafkaListenerContainerFactory() {
 		Map<String, Object> consumerProperties = kafkaProperties.buildConsumerProperties();
-		ConcurrentKafkaListenerContainerFactory<String, Tweet> factory = new ConcurrentKafkaListenerContainerFactory<>();
-		ConsumerFactory<String, Tweet> consumerFactory = new DefaultKafkaConsumerFactory<>(consumerProperties, new StringDeserializer(), new JsonDeserializer<>());
+		ConcurrentKafkaListenerContainerFactory<String, String> factory = new ConcurrentKafkaListenerContainerFactory<>();
+		ConsumerFactory<String, String> consumerFactory
+				= new DefaultKafkaConsumerFactory<>(consumerProperties, new StringDeserializer()
+				, new StringDeserializer());
 		factory.setConsumerFactory(consumerFactory);
 		return factory;
 	}
