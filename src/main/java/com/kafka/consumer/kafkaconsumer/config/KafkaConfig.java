@@ -27,8 +27,7 @@ public class KafkaConfig {
 		Map<String, Object> consumerProperties = kafkaProperties.buildConsumerProperties();
 		ConcurrentKafkaListenerContainerFactory<String, String> factory = new ConcurrentKafkaListenerContainerFactory<>();
 		ConsumerFactory<String, String> consumerFactory
-				= new DefaultKafkaConsumerFactory<>(consumerProperties, new StringDeserializer()
-				, new StringDeserializer());
+				= new DefaultKafkaConsumerFactory<>(consumerProperties, new StringDeserializer(), new StringDeserializer());
 		factory.setConsumerFactory(consumerFactory);
 		return factory;
 	}
